@@ -22,7 +22,7 @@ is_loopback_addr(_)           -> false.
 %% Check if a ipv4 address is a site local address
 -spec is_sitelocal_addr( ip4_address()) -> true | false.
 is_sitelocal_addr({10,_,_,_})    -> true;
-is_sitelocal_addr({172,16,_,_})  -> true;
+is_sitelocal_addr({172,B,_,_})   -> B >= 16 andalso B =< 31;
 is_sitelocal_addr({192,168,_,_}) -> true;
 is_sitelocal_addr(_)             -> false.
 
