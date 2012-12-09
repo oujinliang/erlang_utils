@@ -8,7 +8,10 @@ sample_test() ->
     ?assertEqual(false, utils_inet:is_loopback_addr({137,0,0,1})),
     ?assertEqual(true,  utils_inet:is_sitelocal_addr({10,234,22,1})),
     ?assertEqual(true,  utils_inet:is_sitelocal_addr({10,0,22,1})),
+    ?assertEqual(false, utils_inet:is_sitelocal_addr({172,15,22,1})),
     ?assertEqual(true,  utils_inet:is_sitelocal_addr({172,16,22,1})),
+    ?assertEqual(true,  utils_inet:is_sitelocal_addr({172,31,22,1})),
+    ?assertEqual(false, utils_inet:is_sitelocal_addr({172,32,22,1})),
     ?assertEqual(true,  utils_inet:is_sitelocal_addr({192,168,22,1})),
     ?assertEqual(false, utils_inet:is_sitelocal_addr({129,168,22,1})),
     ok.
@@ -21,4 +24,4 @@ format_address_test() ->
     Str = utils_inet:format_address({192,168,1,1}),
     ?assertEqual("192.168.1.1", Str),
     ok.
-    
+
